@@ -1,0 +1,1 @@
+jenv exec ./venv/bin/spark-submit main.py

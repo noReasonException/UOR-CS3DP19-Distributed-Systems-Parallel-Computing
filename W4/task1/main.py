@@ -1,16 +1,14 @@
-# This is a sample Python script.
+# Import SparkSession
+from pyspark import StorageLevel
+from pyspark.sql import SparkSession
+import pandas as pd
+# Create SparkSession 
+spark = SparkSession.builder \
+      .master("local[1]") \
+      .appName("SparkByExamples.com") \
+      .getOrCreate()
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+rddA = spark.read.option("header",True).csv("data/crime.csv").toDF("cdatetime", "address", "district", "beat", "grid", "crimedescr", "ucr_ncic_code", "latitude", "longitude")
+df = rddA.select(rddA.crimedescr)
+dfb=df.groupBy(df.crimedescr).count()
+pandas = dfb.toPandas().to_csv("data/results.csv")
