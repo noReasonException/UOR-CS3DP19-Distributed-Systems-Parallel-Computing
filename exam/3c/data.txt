@@ -1,0 +1,10 @@
+Reading CS 73 48 25
+Reading Maths 23 10 13
+Reading Chemistry 91 52 39
+Reading History 182 56 126
+Sussex Physics 65 54 11
+Sussex Maths 39 22 17
+Sussex CS 28 14 14
+Bristol History 72 31 41
+Bristol CS 89 45 34
+Bristol Chemistry 134 73 61
